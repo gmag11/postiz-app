@@ -4,6 +4,7 @@ import { shuffle } from 'lodash';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || 'sk-proj-',
+  baseURL: process.env.OPENAI_API_BASE || 'https://api.openai.com',
 });
 
 @Injectable()
