@@ -5,7 +5,7 @@ import { shuffle } from 'lodash';
 const model = process.env.OPENAI_MODEL || 'gpt-4o';
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || 'sk-proj-',
-  baseURL: process.env.OPENAI_API_BASE || 'https://api.openai.com',
+  baseURL: process.env.OPENAI_BASE_URL || 'https://api.openai.com',
 });
 
 @Injectable()
