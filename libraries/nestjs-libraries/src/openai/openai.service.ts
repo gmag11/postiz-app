@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import OpenAI from 'openai';
 import { shuffle } from 'lodash';
 
+const model = process.env.OPENAI_MODEL || 'gpt-4o';
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || 'sk-proj-',
   baseURL: process.env.OPENAI_API_BASE || 'https://api.openai.com',
@@ -34,7 +35,7 @@ export class OpenaiService {
           ],
           n: 5,
           temperature: 1,
-          model: 'gpt-4o',
+          model: model,
         }),
         openai.chat.completions.create({
           messages: [
@@ -50,7 +51,7 @@ export class OpenaiService {
           ],
           n: 5,
           temperature: 1,
-          model: 'gpt-4o',
+          model: model,
         }),
       ])
     ).flatMap((p) => p.choices);
@@ -88,7 +89,7 @@ export class OpenaiService {
           content,
         },
       ],
-      model: 'gpt-4o',
+      model: model,
     });
 
     const { content: articleContent } = websiteContent.choices[0].message;
